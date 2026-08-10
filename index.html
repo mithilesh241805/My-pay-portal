@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>UPI QR Generator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <p class="eyebrow">// MK Payment link generator</p>
+  <h1>UPI QR Generator</h1>
+  <p class="sub">Instant UPI QR Generator is a fast, simple, and secure way to create payment QR codes instantly. Just enter your UPI ID, amount, and payment note to generate a ready-to-scan QR code that makes digital payments easier and quicker. Whether you are a business owner, freelancer, or individual user, our tool helps you create hassle-free payment links and accept UPI payments smoothly.</p>
+
+  <div class="board">
+    <div class="controls">
+      <p class="field-label">1 · Choose UPI ID</p>
+      <div class="ids" id="idList">
+        <div class="id-option" data-vpa="8940181624@ybl" data-label="UPI ID · SBIN5159" data-locked="true">
+          <div class="radio-dot"></div>
+          <div class="id-text">
+            <span class="id-name">UPI ID · SBIN5159</span>
+            <span class="id-vpa">MITHILESH PALANIVEL</span>
+          </div>
+          <svg class="lock-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+        </div>
+        <div class="id-option" data-vpa="8940181624.wallet@phonepe" data-label="UPI ID · PhonePe Wallet" data-locked="true">
+          <div class="radio-dot"></div>
+          <div class="id-text">
+            <span class="id-name">UPI ID · PhonePe Wallet</span>
+            <span class="id-vpa">MITHILESH PALANIVEL</span>
+          </div>
+          <svg class="lock-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+        </div>
+        <div class="id-option" data-vpa="8940091624@nyes" data-label="UPI ID · UBIN1254">
+          <div class="radio-dot"></div>
+          <div class="id-text">
+            <span class="id-name">UPI ID · UBIN1254</span>
+            <span class="id-vpa">MITHILESH PALANIVEL</span>
+          </div>
+        </div>
+        <div class="id-option" data-vpa="rajariventh-4@okaxis" data-label="UPI ID · RT1812" data-locked="true" data-passcode="1812">
+          <div class="radio-dot"></div>
+          <div class="id-text">
+            <span class="id-name">UPI ID · RT1812</span>
+            <span class="id-vpa">RIVENTH RAJA</span>
+          </div>
+          <svg class="lock-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+        </div>
+        <div class="id-option active" data-vpa="" data-label="Custom UPI ID" data-custom="true">
+          <div class="radio-dot"></div>
+          <div class="id-text">
+            <span class="id-name">Custom ID</span>
+            <span class="id-vpa">Enter -To RECIVER UPI ID</span>
+          </div>
+        </div>
+      </div>
+      <div class="custom-vpa-row" id="customVpaRow" style="display:block; margin-bottom:20px;">
+        <p class="field-label">Enter UPI -TO ID</p>
+        <input type="text" id="customVpaInput" placeholder="e.g. yourid@bank" />
+      </div>
+      <p class="field-label">2 · Set amount (₹)</p>
+      <div class="amount-row">
+        <div class="amount-input-wrap">
+          <span class="rupee">₹</span>
+          <input type="number" id="amount" placeholder="Enter amount" min="1" step="1" />
+        </div>
+      </div>
+      <div class="presets">
+        <button class="preset-btn" data-amt="100">₹100</button>
+        <button class="preset-btn" data-amt="200">₹200</button>
+        <button class="preset-btn" data-amt="500">₹500</button>
+        <button class="preset-btn" data-amt="1000">₹1000</button>
+        <button class="preset-btn" data-amt="5000">₹5000</button>
+        <button class="preset-btn" data-amt="10000">₹10000</button>
+        <button class="preset-btn" data-amt="100000">₹100000</button>
+      </div>
+
+      <p class="field-label">3 · Note (optional)</p>
+      <div class="note-row">
+        <input type="text" id="note" placeholder="e.g. Rent, Lunch split, Order #12" maxlength="40" />
+      </div>
+      <p class="field-label">4 · Mobile number to send QR</p>
+      <div class="mobile-row">
+        <select id="countryCode">
+          <option value="+91">🇮🇳 India (+91)</option>
+          <option value="+1">🇺🇸 USA (+1)</option>
+          <option value="+44">🇬🇧 UK (+44)</option>
+          <option value="+61">🇦🇺 Australia (+61)</option>
+          <option value="+86">🇨🇳 China (+86)</option>
+          <option value="+81">🇯🇵 Japan (+81)</option>
+          <option value="+33">🇫🇷 France (+33)</option>
+          <option value="+49">🇩🇪 Germany (+49)</option>
+          <option value="+39">🇮🇹 Italy (+39)</option>
+          <option value="+34">🇪🇸 Spain (+34)</option>
+          <option value="+31">🇳🇱 Netherlands (+31)</option>
+          <option value="+46">🇸🇪 Sweden (+46)</option>
+          <option value="+41">🇨🇭 Switzerland (+41)</option>
+          <option value="+43">🇦🇹 Austria (+43)</option>
+          <option value="+32">🇧🇪 Belgium (+32)</option>
+          <option value="+47">🇳🇴 Norway (+47)</option>
+          <option value="+45">🇩🇰 Denmark (+45)</option>
+          <option value="+48">🇵🇱 Poland (+48)</option>
+          <option value="+55">🇧🇷 Brazil (+55)</option>
+          <option value="+54">🇦🇷 Argentina (+54)</option>
+          <option value="+52">🇲🇽 Mexico (+52)</option>
+          <option value="+27">🇿🇦 South Africa (+27)</option>
+          <option value="+65">🇸🇬 Singapore (+65)</option>
+          <option value="+60">🇲🇾 Malaysia (+60)</option>
+          <option value="+66">🇹🇭 Thailand (+66)</option>
+          <option value="+62">🇮🇩 Indonesia (+62)</option>
+          <option value="+63">🇵🇭 Philippines (+63)</option>
+          <option value="+64">🇳🇿 New Zealand (+64)</option>
+          <option value="+82">🇰🇷 South Korea (+82)</option>
+          <option value="+84">🇻🇳 Vietnam (+84)</option>
+          <option value="+971">🇦🇪 UAE (+971)</option>
+          <option value="+966">🇸🇦 Saudi Arabia (+966)</option>
+          <option value="+974">🇶🇦 Qatar (+974)</option>
+          <option value="+1-876">🇯🇲 Jamaica (+1-876)</option>
+          <option value="+1-787">🇵🇷 Puerto Rico (+1-787)</option>
+          <option value="+420">🇨🇿 Czech Republic (+420)</option>
+          <option value="+385">🇭🇷 Croatia (+385)</option>
+          <option value="+358">🇫🇮 Finland (+358)</option>
+          <option value="+353">🇮🇪 Ireland (+353)</option>
+          <option value="+354">🇮🇸 Iceland (+354)</option>
+          <option value="+370">🇱🇹 Lithuania (+370)</option>
+          <option value="+371">🇱🇻 Latvia (+371)</option>
+          <option value="+372">🇪🇪 Estonia (+372)</option>
+          <option value="+373">🇲🇩 Moldova (+373)</option>
+          <option value="+374">🇦🇲 Armenia (+374)</option>
+          <option value="+375">🇧🇾 Belarus (+375)</option>
+          <option value="+380">🇺🇦 Ukraine (+380)</option>
+          <option value="+381">🇷🇸 Serbia (+381)</option>
+          <option value="+382">🇲🇪 Montenegro (+382)</option>
+          <option value="+383">🇽🇰 Kosovo (+383)</option>
+          <option value="+386">🇸🇮 Slovenia (+386)</option>
+          <option value="+389">🇲🇰 Macedonia (+389)</option>
+          <option value="+40">🇷🇴 Romania (+40)</option>
+          <option value="+359">🇧🇬 Bulgaria (+359)</option>
+          <option value="+30">🇬🇷 Greece (+30)</option>
+          <option value="+90">🇹🇷 Turkey (+90)</option>
+          <option value="+7">🇷🇺 Russia (+7)</option>
+          <option value="+380">🇵🇦 Panama (+507)</option>
+          <option value="+56">🇨🇱 Chile (+56)</option>
+          <option value="+57">🇨🇴 Colombia (+57)</option>
+          <option value="+51">🇵🇪 Peru (+51)</option>
+          <option value="+591">🇧🇴 Bolivia (+591)</option>
+          <option value="+598">🇺🇾 Uruguay (+598)</option>
+          <option value="+593">🇪🇨 Ecuador (+593)</option>
+          <option value="+595">🇵🇾 Paraguay (+595)</option>
+          <option value="+58">🇻🇪 Venezuela (+58)</option>
+          <option value="+212">🇲🇦 Morocco (+212)</option>
+          <option value="+213">🇩🇿 Algeria (+213)</option>
+          <option value="+216">🇹🇳 Tunisia (+216)</option>
+          <option value="+20">🇪🇬 Egypt (+20)</option>
+          <option value="+234">🇳🇬 Nigeria (+234)</option>
+          <option value="+254">🇰🇪 Kenya (+254)</option>
+          <option value="+256">🇺🇬 Uganda (+256)</option>
+          <option value="+255">🇹🇿 Tanzania (+255)</option>
+          <option value="+263">🇿🇼 Zimbabwe (+263)</option>
+          <option value="+260">🇿🇲 Zambia (+260)</option>
+          <option value="+267">🇧🇼 Botswana (+267)</option>
+          <option value="+264">🇳🇦 Namibia (+264)</option>
+          <option value="+268">🇸🇿 Eswatini (+268)</option>
+          <option value="+269">🇰🇲 Comoros (+269)</option>
+          <option value="+508">🇵🇲 Saint Pierre (+508)</option>
+          <option value="+262">🇷🇪 Reunion (+262)</option>
+          <option value="+680">🇵🇼 Palau (+680)</option>
+          <option value="+688">🇹🇻 Tuvalu (+688)</option>
+        </select>
+        <input type="text" id="phoneNumber" placeholder="Enter phone number" maxlength="15" />
+      </div>
+      <div class="action-row">
+        <button class="pay-btn whatsapp-btn" id="whatsappBtn" type="button" style="background:#25d366; color:#fff;">
+          <svg viewBox="0 0 32 32" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M16.004 3C9.377 3 4 8.373 4 15c0 2.34.657 4.53 1.796 6.395L4 29l7.79-1.756A11.93 11.93 0 0 0 16.004 27C22.63 27 28 21.627 28 15S22.63 3 16.004 3zm0 21.75c-1.98 0-3.882-.55-5.52-1.586l-.395-.246-4.62 1.04 1.06-4.5-.258-.412A9.71 9.71 0 0 1 6.25 15c0-5.38 4.375-9.75 9.754-9.75S25.75 9.62 25.75 15s-4.372 9.75-9.746 9.75zm5.36-7.3c-.294-.148-1.74-.858-2.01-.957-.27-.098-.467-.148-.664.148-.196.295-.76.957-.932 1.153-.172.196-.343.221-.638.074-.294-.148-1.242-.457-2.366-1.457-.874-.78-1.464-1.744-1.636-2.038-.172-.295-.018-.454.13-.601.134-.133.294-.344.442-.516.147-.172.196-.295.294-.492.098-.196.05-.369-.024-.516-.074-.148-.663-1.598-.909-2.188-.24-.575-.484-.497-.664-.506l-.566-.01c-.196 0-.516.074-.786.369-.27.295-1.032 1.01-1.032 2.46 0 1.45 1.057 2.852 1.204 3.05.147.196 2.08 3.176 5.04 4.454.704.304 1.253.486 1.68.622.706.225 1.348.193 1.856.117.566-.084 1.74-.712 1.985-1.4.245-.688.245-1.278.172-1.4-.074-.123-.27-.196-.564-.344z"/></svg>
+          <span>WhatsApp</span>
+        </button>
+      </div>
+      <div class="action-row">
+        <button class="generate-btn" id="generateBtn" type="button">Generate QR code</button>
+      </div>
+    </div>
+
+    <div class="receipt-side">
+      <div class="receipt">
+        <div class="receipt-head">Scan to Pay</div>
+        <div class="receipt-sub" id="receiptLabel">UPI ID · SBIN5159</div>
+        <div class="qr-frame">
+          <div id="qrcode"></div>
+          <div class="qr-placeholder" id="qrPlaceholder">Enter details and tap Generate to create your QR</div>
+        </div>
+        <div class="receipt-amt-label">Amount</div>
+        <div class="receipt-amt" id="receiptAmt">₹ —</div>
+        <div class="receipt-row"><span>SCAN AND PAY</span><span>YOUR SECURE PAYMENT</span></div>
+        <div class="receipt-row" id="receiptNoteRow" style="display:none;"><span>Note</span><span id="receiptNote"></span></div>
+        <div class="receipt-actions">
+          <button class="pay-btn" id="payBtn" type="button">Pay</button>
+          <a class="download-link" id="downloadLink" style="display:none;">Download QR (PNG) ↓</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+        <p class="footer-text">MK APP DEVELOPER ©2026</p>
+  </div>
+</div>
+
+<div class="passcode-overlay" id="passcodeModal">
+  <div class="passcode-box">
+    <svg class="lock-icon" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+    <p class="passcode-title">Passcode required</p>
+    <p class="passcode-sub">Enter the passcode to use this UPI ID</p>
+    <input type="password" id="passcodeInput" inputmode="numeric" maxlength="12" placeholder="Enter passcode" />
+    <p class="passcode-error" id="passcodeError">Incorrect passcode. Try again.</p>
+    <div class="passcode-actions">
+      <button type="button" id="passcodeCancel">Cancel</button>
+      <button type="button" id="passcodeSubmit">Unlock</button>
+    </div>
+  </div>
+</div>
+ 
+<script src="script.js"></script>
+</body>
+</html>
