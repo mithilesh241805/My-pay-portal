@@ -16,8 +16,8 @@ Open `index.html` in a browser — it links to `style.css` and `script.js` in th
 
 - **Saved UPI IDs** — pick from preset UPI IDs instead of typing them every time.
 - **Passcode-locked UPI IDs** — some saved UPI IDs are locked behind a passcode so they can't be selected accidentally or by anyone else using the device:
-  - `UPI ID · SBIN5159` and `UPI ID · PhonePe Wallet` → passcode `16241805`
-  - `UPI ID · RT1812` → passcode `1812`
+  - `UPI ID · SBIN5159` and `UPI ID · PhonePe Wallet` → passcode `1******5`
+  - `UPI ID · RT1812` → passcode `1**2`
   - `UPI ID · UBIN1254` and `Custom UPI ID` are not locked.
 - **Custom UPI ID** — type any UPI ID (`name@bank`) directly, no lock.
 - **Amount + quick presets** — ₹100 / ₹200 / ₹500 / ₹1000 / ₹5000 / ₹10000 / ₹100000 buttons, or enter any amount.
